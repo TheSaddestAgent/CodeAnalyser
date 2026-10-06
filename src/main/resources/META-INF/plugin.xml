@@ -1,0 +1,60 @@
+<idea-plugin>
+    <id>com.agentus</id>
+
+    <name>Code Analyser</name>
+
+    <vendor>
+        M3101 Афинагентов Святослав
+    </vendor>
+
+    <description>
+        <![CDATA[
+        Code Analyser — плагин статического анализа Java-кода.
+        ]]>
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <actions>
+        <action
+                id="CodeAnalyser.AnalyseProject"
+                class="com.agentus.actions.AnalyseProjectAction"
+                text="Analyse Current File"
+                description="Analyse current Java file">
+
+            <add-to-group
+                    group-id="ToolsMenu"
+                    anchor="last"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection
+                language="JAVA"
+                shortName="LongMethod"
+                displayName="Long method"
+                groupName="Code Analyser"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.agentus.inspections.LongMethodInspection"/>
+
+        <localInspection
+                language="JAVA"
+                shortName="DeepNesting"
+                displayName="Deep nesting"
+                groupName="Code Analyser"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.agentus.inspections.DeepNestingInspection"/>
+
+        <localInspection
+                language="JAVA"
+                shortName="DuplicateString"
+                displayName="Duplicate string literal"
+                groupName="Code Analyser"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.agentus.inspections.DuplicateStringInspection"/>
+    </extensions>
+</idea-plugin>
